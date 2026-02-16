@@ -4,3 +4,12 @@ plugins {
   alias(libs.plugins.kotlin.android) apply false
   id("org.jlleitschuh.gradle.ktlint") version "14.0.1" apply false
 }
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+    // Optionally configure plugin
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+    }
+}
