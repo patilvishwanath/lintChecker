@@ -1,0 +1,20 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  lint-check:
+    uses: ./.github/workflows/lint-check.yml
+    with:
+      diff-only: true  # Fast mode for PRs
+
+  unit-tests:
+    needs: lint-check  # Tests only run if lint passes
+    uses: ./.github/workflows/run-tests.yml
+    with:
+      build-type: "Debug"
+      build-flavor: "Production"
