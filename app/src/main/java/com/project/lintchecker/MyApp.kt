@@ -7,6 +7,7 @@ import android.os.Bundle
 class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
+
         registerActivityLifecycleCallbacks(ScreenshotActivityLifecycleCallbacks())
     }
 
