@@ -5,3 +5,7 @@ ktlint_standard_no-wildcard-imports = disabled
 ktlint_standard_function-naming = disabled
 indent_style = space
 indent_size = 4
+
+# Override only for Gradle Kotlin scripts
+[build.gradle.kts]
+indent_size = unset
