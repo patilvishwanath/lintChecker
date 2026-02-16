@@ -1,91 +1,72 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
-{\colortbl;\red255\green255\blue255;\red111\green90\blue30;\red247\green247\blue247;\red27\green27\blue27;
-\red181\green0\blue19;\red20\green0\blue196;\red151\green0\blue126;\red13\green100\blue1;\red73\green17\blue135;
-}
-{\*\expandedcolortbl;;\cssrgb\c51373\c42353\c15686;\cssrgb\c97647\c97647\c97647;\cssrgb\c14118\c14118\c14118;
-\cssrgb\c76863\c10196\c8627;\cssrgb\c10980\c0\c81176;\cssrgb\c66667\c5098\c56863;\cssrgb\c0\c45490\c0;\cssrgb\c36078\c14902\c60000;
-}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+name: Lint Check - Ktlint
 
-\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 ame:\cf4 \strokec4  \cf5 \strokec5 Lint\cf4 \strokec4  \cf5 \strokec5 Check\cf4 \strokec4  \cf6 \strokec6 -\cf4 \strokec4  \cf5 \strokec5 Ktlint\cf4 \strokec4 \
-\
-\cf2 \strokec2 on:\cf4 \strokec4 \
-  \cf2 \strokec2 workflow_call:\cf4 \strokec4 \
-    \cf2 \strokec2 inputs:\cf4 \strokec4 \
-      \cf2 \strokec2 diff-only:\cf4 \strokec4 \
-        \cf2 \strokec2 description:\cf4 \strokec4  \cf5 \strokec5 "Run lint only on changed files (for PRs)"\cf4 \strokec4 \
-        \cf2 \strokec2 required:\cf4 \strokec4  \cf7 \strokec7 false\cf4 \strokec4 \
-        \cf2 \strokec2 type:\cf4 \strokec4  \cf5 \strokec5 boolean\cf4 \strokec4 \
-        \cf2 \strokec2 default:\cf4 \strokec4  \cf7 \strokec7 true\cf4 \strokec4 \
-\
-\cf2 \strokec2 jobs:\cf4 \strokec4 \
-  \cf2 \strokec2 ktlint:\cf4 \strokec4 \
-    \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Lint\cf4 \strokec4  \cf5 \strokec5 Check\cf4 \strokec4  \cf6 \strokec6 -\cf4 \strokec4  \cf5 \strokec5 Ktlint\cf4 \strokec4 \
-    \cf2 \strokec2 runs-on:\cf4 \strokec4  \cf5 \strokec5 ubuntu-latest\cf4 \strokec4 \
-\
-    \cf2 \strokec2 steps:\cf4 \strokec4 \
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Checkout\cf4 \strokec4  \cf5 \strokec5 code\cf4 \strokec4 \
-        \cf2 \strokec2 uses:\cf4 \strokec4  \cf5 \strokec5 actions/checkout@v4\cf4 \strokec4 \
-        \cf2 \strokec2 with:\cf4 \strokec4 \
-          \cf2 \strokec2 fetch-depth:\cf4 \strokec4  \cf6 \strokec6 0\cf4 \strokec4   \cf8 \strokec8 # Needed for diff detection\cf4 \strokec4 \
-\
-      \cf8 \strokec8 # \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \cf4 \strokec4 \
-      \cf8 \strokec8 # DIFF-ONLY MODE (Fast - for PRs)\cf4 \strokec4 \
-      \cf8 \strokec8 # \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \cf4 \strokec4 \
-      \
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Get\cf4 \strokec4  \cf5 \strokec5 changed\cf4 \strokec4  \cf5 \strokec5 Kotlin\cf4 \strokec4  \cf5 \strokec5 files\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4 \
-        \cf2 \strokec2 id:\cf4 \strokec4  \cf5 \strokec5 changed-files\cf4 \strokec4 \
-        \cf2 \strokec2 uses:\cf4 \strokec4  \cf5 \strokec5 tj-actions/changed-files@v45\cf4 \strokec4 \
-        \cf2 \strokec2 with:\cf4 \strokec4 \
-          \cf2 \strokec2 files:\cf4 \strokec4  \cf5 \strokec5 |\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb3             **/*.kt\cb1 \
-\cb3             **/*.kts\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf4 \cb3 \strokec4 \
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Install\cf4 \strokec4  \cf5 \strokec5 ktlint\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4  \cf5 \strokec5 &&\cf4 \strokec4  \cf5 \strokec5 steps.changed-files.outputs.any_changed\cf4 \strokec4  \cf5 \strokec5 ==\cf4 \strokec4  \cf5 \strokec5 'true'\cf4 \strokec4 \
-        \cf2 \strokec2 run:\cf4 \strokec4  \cf5 \strokec5 |\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb3           curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.5.0/ktlint\cb1 \
-\cb3           chmod +x ktlint\cb1 \
-\cb3           sudo mv ktlint /usr/local/bin/\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf4 \cb3 \strokec4 \
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Run\cf4 \strokec4  \cf5 \strokec5 ktlint\cf4 \strokec4  \cf5 \strokec5 on\cf4 \strokec4  \cf5 \strokec5 changed\cf4 \strokec4  \cf5 \strokec5 files\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4  \cf5 \strokec5 &&\cf4 \strokec4  \cf5 \strokec5 steps.changed-files.outputs.any_changed\cf4 \strokec4  \cf5 \strokec5 ==\cf4 \strokec4  \cf5 \strokec5 'true'\cf4 \strokec4 \
-        \cf2 \strokec2 run:\cf4 \strokec4  \cf5 \strokec5 |\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb3           echo "\uc0\u55357 \u56589  Checking lint on changed Kotlin files:"\cb1 \
-\cb3           echo "$\{\{ steps.changed-files.outputs.all_changed_files \}\}" | tr ' ' '\\n'\cb1 \
-\cb3           echo ""\cb1 \
-\cb3           ktlint --reporter=plain $\{\{ steps.changed-files.outputs.all_changed_files \}\}\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf4 \cb3 \strokec4 \
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Skip\cf4 \strokec4  \cf5 \strokec5 lint\cf4 \strokec4  \cf5 \strokec5 (no\cf4 \strokec4  \cf5 \strokec5 Kotlin\cf4 \strokec4  \cf5 \strokec5 files\cf4 \strokec4  \cf5 \strokec5 changed)\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4  \cf5 \strokec5 &&\cf4 \strokec4  \cf5 \strokec5 steps.changed-files.outputs.any_changed\cf4 \strokec4  \cf9 \strokec9 !=\cf4 \strokec4  \cf5 \strokec5 'true'\cf4 \strokec4 \
-        \cf2 \strokec2 run:\cf4 \strokec4  \cf5 \strokec5 echo\cf4 \strokec4  \cf5 \strokec5 "\uc0\u9989  No Kotlin files changed, skipping lint check"\cf4 \strokec4 \
-\
-      \cf8 \strokec8 # \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \cf4 \strokec4 \
-      \cf8 \strokec8 # FULL PROJECT MODE (Thorough - for releases)\cf4 \strokec4 \
-      \cf8 \strokec8 # \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \cf4 \strokec4 \
-      \
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Set\cf4 \strokec4  \cf5 \strokec5 up\cf4 \strokec4  \cf5 \strokec5 JDK\cf4 \strokec4  \cf6 \strokec6 17\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4  \cf5 \strokec5 ==\cf4 \strokec4  \cf7 \strokec7 false\cf4 \strokec4 \
-        \cf2 \strokec2 uses:\cf4 \strokec4  \cf5 \strokec5 actions/setup-java@v4\cf4 \strokec4 \
-        \cf2 \strokec2 with:\cf4 \strokec4 \
-          \cf2 \strokec2 distribution:\cf4 \strokec4  \cf5 \strokec5 temurin\cf4 \strokec4 \
-          \cf2 \strokec2 java-version:\cf4 \strokec4  \cf6 \strokec6 17\cf4 \strokec4 \
-\
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Setup\cf4 \strokec4  \cf5 \strokec5 Gradle\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4  \cf5 \strokec5 ==\cf4 \strokec4  \cf7 \strokec7 false\cf4 \strokec4 \
-        \cf2 \strokec2 uses:\cf4 \strokec4  \cf5 \strokec5 gradle/actions/setup-gradle@v4\cf4 \strokec4 \
-\
-      \cf6 \strokec6 -\cf4 \strokec4  \cf2 \strokec2 name:\cf4 \strokec4  \cf5 \strokec5 Run\cf4 \strokec4  \cf5 \strokec5 ktlint\cf4 \strokec4  \cf5 \strokec5 (full\cf4 \strokec4  \cf5 \strokec5 project)\cf4 \strokec4 \
-        \cf2 \strokec2 if:\cf4 \strokec4  \cf5 \strokec5 inputs.diff-only\cf4 \strokec4  \cf5 \strokec5 ==\cf4 \strokec4  \cf7 \strokec7 false\cf4 \strokec4 \
-        \cf2 \strokec2 run:\cf4 \strokec4  \cf5 \strokec5 ./gradlew\cf4 \strokec4  \cf5 \strokec5 ktlintCheck}
+on:
+  workflow_call:
+    inputs:
+      diff-only:
+        description: "Run lint only on changed files (for PRs)"
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  ktlint:
+    name: Lint Check - Ktlint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed for diff detection
+
+      # ═══════════════════════════════════════════════════════════
+      # DIFF-ONLY MODE (Fast - for PRs)
+      # ═══════════════════════════════════════════════════════════
+
+      - name: Get changed Kotlin files
+        if: inputs.diff-only
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **/*.kt
+            **/*.kts
+
+      - name: Install ktlint
+        if: inputs.diff-only && steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.5.0/ktlint
+          chmod +x ktlint
+          sudo mv ktlint /usr/local/bin/
+
+      - name: Run ktlint on changed files
+        if: inputs.diff-only && steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo "🔍 Checking lint on changed Kotlin files:"
+          echo "${{ steps.changed-files.outputs.all_changed_files }}" | tr ' ' '\n'
+          echo ""
+          ktlint --reporter=plain ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Skip lint (no Kotlin files changed)
+        if: inputs.diff-only && steps.changed-files.outputs.any_changed != 'true'
+        run: echo "✅ No Kotlin files changed, skipping lint check"
+
+      # ═══════════════════════════════════════════════════════════
+      # FULL PROJECT MODE (Thorough - for releases)
+      # ═══════════════════════════════════════════════════════════
+
+      - name: Set up JDK 17
+        if: inputs.diff-only == false
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Gradle
+        if: inputs.diff-only == false
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Run ktlint (full project)
+        if: inputs.diff-only == false
+        run: ./gradlew ktlintCheck
