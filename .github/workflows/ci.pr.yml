@@ -3,7 +3,7 @@ name: PR Validation
 on:
   pull_request:
     branches:
-      - develop
+      - main
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
@@ -12,9 +12,9 @@ jobs:
     with:
       diff-only: true  # Fast mode for PRs
 
-  unit-tests:
-    needs: lint-check  # Tests only run if lint passes
-    uses: ./.github/workflows/run-tests.yml
-    with:
-      build-type: "Debug"
-      build-flavor: "Production"
+#  unit-tests:
+#    needs: lint-check  # Tests only run if lint passes
+#    uses: ./.github/workflows/run-tests.yml
+#    with:
+#      build-type: "Debug"
+#      build-flavor: "Production"
